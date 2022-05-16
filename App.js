@@ -8,6 +8,7 @@ import List from "./components/List";
 import Input from "./components/Input";
 import Edit from "./components/Edit";
 import Detail from "./components/Detail";
+import Calculator from "./components/Calculator";
 // Create Stack Navigation
 const Stack = createStackNavigator()
 
@@ -54,6 +55,15 @@ export default function App() {
           component={Detail}
           options={{
             title: "Todo"
+          }}
+        />
+
+        <Stack.Screen
+          name="Calculator"
+          component={Calculator}
+          options={{
+            title: "Calcultaor",
+            headerShown: false
           }}
         />
 

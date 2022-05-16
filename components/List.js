@@ -15,13 +15,12 @@ export default function List({navigation}) {
     api.get('/')
     .then((res) => { 
       setTask(res.data)
-      console.log(res.data);
     })
   }
 
   React.useEffect(() => {
     getData()
-  },[])
+  },[task])
   
   const deleteData = async (_id) => {
     await api.delete(`/${_id}`)
@@ -33,6 +32,15 @@ export default function List({navigation}) {
     <View style={Styles.container} >
     
       <View style={Styles.taskWrapper}>
+      <TouchableOpacity onPress={() => navigation.navigate('Calculator')} style={{          
+          position: 'absolute',
+          top: 40,
+          right: 20}}>
+        <Ionicons name='ios-calculator' style={{
+          fontSize: 30,
+          color: '#fff',
+        }}/>
+      </TouchableOpacity>
         <Text style={Styles.sectionTitle}>Today's task</Text>
           <View style={Styles.items}>
           {
@@ -68,7 +76,7 @@ export default function List({navigation}) {
       
 
       <View style={Styles.writeTaskWrapper}> 
-        <TouchableOpacity onPress={() => navigation.navigate('Input', getData())}>
+        <TouchableOpacity onPress={() => navigation.navigate('Input', task)}>
           <View style={Styles.addWrapper}>
             <Text style={Styles.addText}>+</Text>
           </View>

@@ -10,13 +10,13 @@ import { Styles } from './Styles'
 import {api} from "../core/api";
 
 export default function input({navigation, route}) {
+    console.log(route);
     const [title, setTitle] = React.useState("")
 
     const handleSubmit = async() => {
         const response = await api.post('/', {
             name: title
         })
-        console.log(response.data);
         setTitle('')
         navigation.navigate("List")
         alert('Success add task!')
